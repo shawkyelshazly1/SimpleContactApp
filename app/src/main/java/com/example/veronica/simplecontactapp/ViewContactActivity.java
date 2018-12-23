@@ -1,13 +1,18 @@
 package com.example.veronica.simplecontactapp;
 
 import android.app.LoaderManager;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.ContentValues;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -47,11 +52,26 @@ public class ViewContactActivity extends AppCompatActivity implements LoaderMana
                 if (isFavourite()) {
                     favourite = 0;
                     updateContact(favourite);
+
                     Toast.makeText(ViewContactActivity.this, "Removed From Favourites", Toast.LENGTH_SHORT).show();
                 } else {
                     favourite = 1;
                     updateContact(favourite);
                     Toast.makeText(ViewContactActivity.this, "Added To Favourites", Toast.LENGTH_SHORT).show();
+                    NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(ViewContactActivity.this);
+                    Intent intent = new Intent(ViewContactActivity.this, ContactsActivity.class);
+                    PendingIntent pendingIntent = PendingIntent.getActivity(ViewContactActivity.this, 100, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+                    notificationBuilder.setSmallIcon(R.drawable.ic_notifications_black_24dp);
+                    notificationBuilder.setContentTitle("News!");
+                    notificationBuilder.setContentText("This is a great news");
+
+                    notificationBuilder.setAutoCancel(true);
+                    notificationBuilder.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher));
+                    notificationBuilder.setContentIntent(pendingIntent);
+                    Notification notification = notificationBuilder.build();
+                    NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                    manager.notify(100, notification);
+
                 }
 
                 resetLoader();
