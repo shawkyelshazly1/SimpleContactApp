@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Simple Contact App</string>
+    <string name="contacts_deleted_toas_msg">All Contacts Were Deleted</string>
+    <string name="failed_delete_contacts_toast_msg">Failed to delete Contacts</string>
+    <string name="edit_contact_activity_title">Edit Contact</string>
+    <string name="add_contact_activity_title">Add Contact</string>
+    <string name="name_placeholder">Name</string>
+    <string name="number_placeholder">Phone no.</string>
+    <string name="save_contact_menu_item">Save Contact</string>
+    <string name="contact_updated_taost_msg">Contact Was Updated</string>
+    <string name="failed_updating_contact_toast_msg">Failed To Update Contact</string>
+    <string name="empty_field_toast_msg">Name or Number cann\'t be empty</string>
+    <string name="add_new_user_toast_msg">Added New User</string>
+    <string name="failed_toadd_user">Failed To Add User</string>
+
+    <string name="contact_deleted_msg">Contact Was Deleted</string>
+    <string name="contact_deleted_failed_msg">Failed To Delete Contact</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
